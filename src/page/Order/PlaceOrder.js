@@ -2,13 +2,15 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 const PlaceOrder = () => {
     const { id } = useParams()
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const url = `http://localhost:5000/product/${id}`
     const { data: product, isLoading } = useQuery('productInfo', () => fetch(url).then(res => res.json()))
@@ -16,8 +18,20 @@ const PlaceOrder = () => {
         return <Loading></Loading>
     }
     const onSubmit = data => {
-        console.log(data);
+        const url = 'http://localhost:5000/order'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+            .then(result => {
+                toast.success('Order Place Successfully')
+                navigate('/home')
+            })
     };
+
     return (
         <div class="hero min-h-screen">
             <div className="card">
