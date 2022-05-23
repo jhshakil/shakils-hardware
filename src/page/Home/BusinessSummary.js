@@ -1,15 +1,28 @@
 import React from 'react';
-import bannerImage from '../../image/banner/banner.jpg'
 
 const BusinessSummary = () => {
     return (
-        <div class="hero min-h-min bg-gradient-to-r from-primary to-secondary text-white">
-            <div class="hero-content py-0 justify-between flex-col lg:flex-row">
-                <img src={bannerImage} class="max-w-lg" alt='images' />
-                <div className='p-8'>
-                    <h1 class="text-5xl font-bold">Business Summary</h1>
-                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                    <button class="btn btn-natural font-bold">Get Started</button>
+        <div className="card">
+            <div className="card-body items-center text-center">
+                <h2 className="card-title text-3xl font-bold">Our Business Summary</h2>
+                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div className="w-full my-4 grid grid-cols-4">
+                    <div>
+                        <p className='font-bold'>Factory</p>
+                        <h3 className='text-5xl  my-4 font-bold text-neutral'>7</h3>
+                    </div>
+                    <div>
+                        <p className='font-bold'>Worker</p>
+                        <h3 className='text-5xl  my-4 font-bold text-neutral'>50000 +</h3>
+                    </div>
+                    <div>
+                        <p className='font-bold'>Client</p>
+                        <h3 className='text-5xl  my-4 font-bold text-neutral'>700 +</h3>
+                    </div>
+                    <div>
+                        <p className='font-bold'>Dealer</p>
+                        <h3 className='text-5xl  my-4 font-bold text-neutral'>12000 +</h3>
+                    </div>
                 </div>
             </div>
         </div>

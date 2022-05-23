@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading'
 
 const HomeReview = () => {
-    const { data: reviews, isLoading } = useQuery('homeReview', () => fetch('fakeReview.json').then(res => res.json()));
+    const { data: reviews, isLoading } = useQuery('homeReview', () => fetch('http://localhost:5000/review').then(res => res.json()));
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -12,13 +12,13 @@ const HomeReview = () => {
             <h2 className='text-center font-bold text-3xl'>Our Customer Review</h2>
             <div className='grid grid-cols-3 gap-12 m-8'>
                 {
-                    reviews.map(review => <div class="card w-full bg-base-100 shadow-xl">
-                        <div class="card-body">
-                            <h2 class="card-title">{review.name}</h2>
+                    reviews.map(review => <div key={review._id} className="card w-full bg-base-100 shadow-xl">
+                        <div className="card-body">
+                            <h2 className="card-title">{review.name}</h2>
                             <p>{review.description}</p>
-                            <div class="card-actions">
-                                <div class="avatar">
-                                    <div class="w-24 rounded-full">
+                            <div className="card-actions">
+                                <div className="avatar">
+                                    <div className="w-24 rounded-full">
                                         <img src={review.img} alt='' />
                                     </div>
                                 </div>
@@ -27,7 +27,7 @@ const HomeReview = () => {
                     </div>)
                 }
             </div>
-            <button class="btn btn-md block m-auto">See All Reviews</button>
+            <button className="btn btn-md block m-auto">See All Reviews</button>
         </div>
     );
 };

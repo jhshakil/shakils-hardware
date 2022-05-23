@@ -35,17 +35,17 @@ const SignUp = () => {
     };
     return (
         <div className='my-4 flex justify-center'>
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body items-center">
-                    <h2 class="card-title text-3xl font-bold">Sign Up</h2>
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body items-center">
+                    <h2 className="card-title text-3xl font-bold">Sign Up</h2>
                     <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
-                        <div class="form-control w-full ">
-                            <label class="label">
-                                <span class="label-text">Your Name</span>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Your Name</span>
                             </label>
                             <input type="text"
                                 placeholder="Enter Your Name"
-                                class="input input-bordered w-full"
+                                className="input input-bordered w-full"
                                 {...register("name", {
                                     required: {
                                         value: true,
@@ -53,17 +53,17 @@ const SignUp = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
+                            <label className="label">
                                 {errors.name?.type === 'required' && <span className='text-red-500'>{errors.name.message}</span>}
                             </label>
                         </div>
-                        <div class="form-control w-full ">
-                            <label class="label">
-                                <span class="label-text">Email</span>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Email</span>
                             </label>
                             <input type="email"
                                 placeholder="Enter Your Email"
-                                class="input input-bordered w-full"
+                                className="input input-bordered w-full"
                                 {...register("email", {
                                     required: {
                                         value: true,
@@ -75,18 +75,18 @@ const SignUp = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
+                            <label className="label">
                                 {errors.email?.type === 'required' && <span className='text-red-500'>{errors.email.message}</span>}
                                 {errors.email?.type === 'pattern' && <span className='text-red-500'>{errors.pattern.message}</span>}
                             </label>
                         </div>
-                        <div class="form-control w-full ">
-                            <label class="label">
-                                <span class="label-text">Password</span>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Password</span>
                             </label>
                             <input type="password"
                                 placeholder="Enter Your Password"
-                                class="input input-bordered w-full"
+                                className="input input-bordered w-full"
                                 {...register("password", {
                                     required: {
                                         value: true,
@@ -98,15 +98,15 @@ const SignUp = () => {
                                     }
                                 })}
                             />
-                            <label class="label">
+                            <label className="label">
                                 {errors.password?.type === 'required' && <span className='text-red-500'>{errors.password.message}</span>}
                                 {errors.password?.type === 'minLength' && <span className='text-red-500'>{errors.password.message}</span>}
                             </label>
                         </div>
                         <input className='btn btn-natural block m-auto w-full font-bold' type="submit" value='Sign Up' />
                     </form>
-                    <div class="divider">OR</div>
-                    <div class="card-actions w-full">
+                    <div className="divider">OR</div>
+                    <div className="card-actions w-full">
                         <SocialLogin></SocialLogin>
                     </div>
                     <div>

@@ -5,6 +5,8 @@ import Home from './page/Home/Home'
 import { ToastContainer } from 'react-toastify';
 import Login from './page/LoginSystem/Login';
 import SignUp from './page/LoginSystem/SignUp';
+import PlaceOrder from './page/Order/PlaceOrder';
+import RequireAuth from './page/LoginSystem/RequireAuth';
 
 function App() {
   return (
@@ -18,7 +20,7 @@ function App() {
         <Route path='/dashboard' element={<Home></Home>}></Route> */}
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
-        {/* <Route path='/logout' element={<Home></Home>}></Route> */}
+        <Route path='/placeOrder/:id' element={<RequireAuth><PlaceOrder></PlaceOrder></RequireAuth>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>

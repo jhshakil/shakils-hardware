@@ -24,7 +24,7 @@ const SocialLogin = () => {
     }
     return (
         <div className='w-full'>
-            <button onClick={() => signInWithGoogle()} class="btn btn-natural font-bold w-full">Google Log In</button>
+            <button onClick={() => signInWithGoogle()} className="btn btn-natural font-bold w-full">Google Log In</button>
         </div>
     );
 };
