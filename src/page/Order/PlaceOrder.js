@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -11,20 +11,51 @@ const PlaceOrder = () => {
     const { id } = useParams()
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, control } = useForm();
+    const [totalCost, setTotalCost] = useState('');
     const url = `http://localhost:5000/product/${id}`
     const { data: product, isLoading } = useQuery('productInfo', () => fetch(url).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    const changing = value => {
+        if (value) {
+            const available = parseInt(product.quantity) - parseInt(value)
+            const totalCost = parseInt(value) * parseInt(product.price)
+            setTotalCost(totalCost);
+        }
+    }
+
     const onSubmit = data => {
+        const orderQuantity = parseInt(data.orderQuantity);
+        const minOrder = parseInt(product.minOrder);
+        const quantity = parseInt(product.quantity);
+        console.log(product.quantity)
+        const totalPrice = parseInt(product.price) * orderQuantity
+        if (orderQuantity < minOrder) {
+            return toast.error(`Please order minimum ${minOrder}`)
+        } else if (orderQuantity > quantity) {
+            return toast.error('DO not order maximum of quantity')
+        }
+
+        const content = {
+            name: data.name,
+            product: product.name,
+            email: data.email,
+            number: data.number,
+            address: data.address,
+            totalPrice: totalPrice,
+            orderQuantity: data.orderQuantity,
+            img: product.img
+        }
         const url = 'http://localhost:5000/order'
         fetch(url, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(content)
         }).then(res => res.json())
             .then(result => {
                 toast.success('Order Place Successfully')
@@ -117,20 +148,30 @@ const PlaceOrder = () => {
                                     <p><span className='font-bold'>Min Order:</span> {product.minOrder}</p>
                                     <p><span className='font-bold'>Available Quantity:</span> {product.quantity}</p>
                                     <p><span className='font-bold'>Price:</span> {product.price}</p>
+                                    <p><span className='font-bold'>Total Price:</span> {totalCost ? totalCost : product.price}</p>
                                     <div className="form-control w-full ">
                                         <label className="label">
                                             <span className="label-text">Your Order Quantity</span>
                                         </label>
-                                        <input type="number"
-                                            defaultValue={product?.minOrder}
-                                            placeholder="Enter Your Order Quantity"
-                                            className="input input-bordered w-full"
-                                            {...register("orderQuantity", {
+                                        <Controller
+                                            control={control}
+                                            name="orderQuantity"
+                                            rules={{
                                                 required: {
                                                     value: true,
                                                     message: 'Quantity Number is Required'
                                                 }
-                                            })}
+                                            }}
+                                            render={({ field }) => (
+                                                <input type="number"
+                                                    defaultValue={product?.minOrder}
+                                                    placeholder="Enter Your Order Quantity"
+                                                    className="input input-bordered w-full"
+                                                    {...field} ref={e => {
+                                                        changing(field.value);
+                                                        field.ref(e);
+                                                    }} />
+                                            )}
                                         />
                                         <label className="label">
                                             {errors.orderQuantity?.type === 'required' && <span className='text-red-500'>{errors.orderQuantity.message}</span>}
