@@ -20,9 +20,11 @@ const PlaceOrder = () => {
     }
 
     const changing = value => {
-        if (value) {
-            const available = parseInt(product.quantity) - parseInt(value)
-            const totalCost = parseInt(value) * parseInt(product.price)
+        if (value && (parseInt(value) >= 0)) {
+            const totalCost = parseInt(value) * parseInt(product.price);
+            setTotalCost(totalCost);
+        } else {
+            const totalCost = 0;
             setTotalCost(totalCost);
         }
     }
@@ -61,10 +63,20 @@ const PlaceOrder = () => {
                 toast.success('Order Place Successfully')
                 navigate('/home')
             })
+        const available = quantity - orderQuantity;
+        const update = { available };
+        fetch(`http://localhost:5000/product/${product._id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(update)
+        }).then(res => res.json())
+            .then(result => console.log(result))
     };
 
     return (
-        <div class="hero min-h-screen">
+        <div className="hero min-h-screen">
             <div className="card">
                 <div className="card-body">
                     <h2 className="text-3xl text-center font-bold">Your Information</h2>
@@ -137,7 +149,7 @@ const PlaceOrder = () => {
                             </div>
                             <input className='btn btn-natural block m-auto w-full font-bold' type="submit" value='Place Order' />
                         </div>
-                        <div class="text-center px-16 lg:text-left">
+                        <div className="text-center px-16 lg:text-left">
                             <div className="card w-full bg-base-100 shadow-xl">
                                 <figure className="px-10 pt-10">
                                     <img src={product.img} alt="Shoes" className="rounded-xl mx-h-4" />
@@ -148,7 +160,7 @@ const PlaceOrder = () => {
                                     <p><span className='font-bold'>Min Order:</span> {product.minOrder}</p>
                                     <p><span className='font-bold'>Available Quantity:</span> {product.quantity}</p>
                                     <p><span className='font-bold'>Price:</span> {product.price}</p>
-                                    <p><span className='font-bold'>Total Price:</span> {totalCost ? totalCost : product.price}</p>
+                                    <p><span className='font-bold'>Total Price:</span> {totalCost ? totalCost : parseInt(product.price) * parseInt(product.minOrder)}</p>
                                     <div className="form-control w-full ">
                                         <label className="label">
                                             <span className="label-text">Your Order Quantity</span>

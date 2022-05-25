@@ -28,8 +28,8 @@ const MyOrder = () => {
     return (
         <div>
             <h1 className='text-3xl text-center font-bold my-8'>My Order</h1>
-            <div class="overflow-x-auto">
-                <table class="table table-compact w-full">
+            <div className="overflow-x-auto">
+                <table className="table table-compact w-full">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -47,16 +47,16 @@ const MyOrder = () => {
                                 <tr key={order._id}>
                                     <th>{index + 1}</th>
                                     <td>
-                                        <div class="flex items-center space-x-3">
-                                            <div class="avatar">
-                                                <div class="mask mask-squircle w-12 h-12">
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
                                                     <img src={order.img} alt="Avatar Tailwind CSS Component" />
                                                 </div>
                                             </div>
                                             <div>
-                                                <div class="font-bold">{order.name}</div>
-                                                <div class="text-sm opacity-50">{order.address}</div>
-                                                <div class="text-sm opacity-50">{order.number}</div>
+                                                <div className="font-bold">{order.name}</div>
+                                                <div className="text-sm opacity-50">{order.address}</div>
+                                                <div className="text-sm opacity-50">{order.number}</div>
                                             </div>
                                         </div>
                                     </td>
