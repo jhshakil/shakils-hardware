@@ -87,7 +87,6 @@ const PlaceOrder = () => {
                                     <span className="label-text">Your Name</span>
                                 </label>
                                 <input type="text"
-                                    readOnly
                                     value={user?.displayName || ''}
                                     className="input input-bordered w-full"
                                     {...register("name", {
