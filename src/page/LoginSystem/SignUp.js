@@ -33,16 +33,6 @@ const SignUp = () => {
     }
     const onSubmit = data => {
         createUserWithEmailAndPassword(data.email, data.password);
-        const email = data.email;
-        const name = data.name;
-        const update = { email, name };
-        const url = 'http://localhost:5000/profile'
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            }, body: JSON.stringify(update)
-        }).then(res => res.json()).then(result => console.log(result))
     };
     return (
         <div className='my-4 flex justify-center'>
@@ -50,25 +40,6 @@ const SignUp = () => {
                 <div className="card-body items-center">
                     <h2 className="card-title text-3xl font-bold">Sign Up</h2>
                     <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-control w-full ">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            <input type="text"
-                                placeholder="Enter Your Name"
-                                className="input input-bordered w-full"
-                                {...register("name", {
-                                    required: {
-                                        value: true,
-                                        message: 'Name is Required'
-                                    }
-                                })}
-                            />
-                            <label className="label">
-                                {errors.name?.type === 'required' && <span className='text-red-500'>{errors.name.message}</span>}
-
-                            </label>
-                        </div>
                         <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Email</span>

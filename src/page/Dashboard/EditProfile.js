@@ -13,15 +13,16 @@ const EditProfile = () => {
     const [user] = useAuthState(auth);
     const { data: profile, isLoading, refetch } = useQuery('profile', () =>
         fetch(`http://localhost:5000/profile?email=${user.email}`).then(res => res.json()))
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
     const onSubmit = async data => {
+        const name = data.name;
         const location = data.location;
         const education = data.education;
         const linkedin = data.linkedin;
         const number = data.number;
-        const userData = { location, education, linkedin, number }
+        const userData = { name, location, education, linkedin, number }
         const url = `http://localhost:5000/profile/${user.email}`;
         fetch(url, {
             method: 'PUT',
@@ -43,6 +44,17 @@ const EditProfile = () => {
                 <div class="modal-box">
                     <label for="edit-profile" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-control w-full ">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input type="text"
+                                defaultValue={profile?.name}
+                                placeholder="Enter Your Name"
+                                className="input input-bordered w-full"
+                                {...register("name")}
+                            />
+                        </div>
                         <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Location</span>

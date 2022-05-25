@@ -22,6 +22,7 @@ const SocialLogin = () => {
     if (user) {
         return navigate(from, { replace: true });
     }
+
     return (
         <div className='w-full'>
             <button onClick={() => signInWithGoogle()} className="btn btn-natural font-bold w-full">Google Log In</button>

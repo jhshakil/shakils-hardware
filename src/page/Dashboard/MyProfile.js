@@ -9,10 +9,14 @@ import EditProfile from './EditProfile';
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const { data: profile, isLoading, refetch } = useQuery('profile', () =>
-        fetch(`http://localhost:5000/profile?email=${user.email}`).then(res => res.json()))
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+        fetch(`http://localhost:5000/profile?email=${user?.email}`).then(res => res.json()))
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
+    // if (!profile) {
+    //     refetch()
+    // }
+    refetch()
     return (
         <div>
             <h1 className='text-3xl my-8 font-bold'>My Profile</h1>
@@ -29,7 +33,7 @@ const MyProfile = () => {
                                 <label class="label">
                                     <span class="label-text">name</span>
                                 </label>
-                                <input type="text" disabled value={user.displayName || profile.name} class="input input-bordered" />
+                                <input type="text" disabled value={user.displayName || profile?.name} class="input input-bordered" />
                             </div>
                             <div class="form-control">
                                 <label class="label">
@@ -41,25 +45,25 @@ const MyProfile = () => {
                                 <label class="label">
                                     <span class="label-text">Location</span>
                                 </label>
-                                <input type="text" disabled value={profile.location || ''} class="input input-bordered" />
+                                <input type="text" disabled value={profile?.location || ''} class="input input-bordered" />
                             </div>
                             <div class="form-control">
                                 <label class="label">
                                     <span class="label-text">Education</span>
                                 </label>
-                                <input type="text" disabled value={profile.education || ''} class="input input-bordered" />
+                                <input type="text" disabled value={profile?.education || ''} class="input input-bordered" />
                             </div>
                             <div class="form-control">
                                 <label class="label">
                                     <span class="label-text">Linkedin Profile</span>
                                 </label>
-                                <input type="text" disabled value={profile.linkedin || ''} class="input input-bordered" />
+                                <input type="text" disabled value={profile?.linkedin || ''} class="input input-bordered" />
                             </div>
                             <div class="form-control">
                                 <label class="label">
                                     <span class="label-text">Number</span>
                                 </label>
-                                <input type="text" disabled value={profile.number || ''} class="input input-bordered" />
+                                <input type="text" disabled value={profile?.number || ''} class="input input-bordered" />
                             </div>
 
                         </div>
