@@ -71,27 +71,27 @@ const MyOrder = () => {
                                     <td>Payment</td>
                                     {/* <td><button onClick={() => console.log(order._id)}>Cancle</button></td> */}
                                     {/* <td><button>
-                                        <label order={order} for="order-cancel" class="btn btn-sm modal-button">Cancel Order</label>
-                                        <input type="checkbox" id="order-cancel" class="modal-toggle" />
-                                        <div class="modal modal-bottom sm:modal-middle">
-                                            <div class="modal-box">
-                                                <h3 class="font-bold text-lg">Do You Want To Cancel This Order</h3>
-                                                <div class="modal-action">
+                                        <label order={order} for="order-cancel" className="btn btn-sm modal-button">Cancel Order</label>
+                                        <input type="checkbox" id="order-cancel" className="modal-toggle" />
+                                        <div className="modal modal-bottom sm:modal-middle">
+                                            <div className="modal-box">
+                                                <h3 className="font-bold text-lg">Do You Want To Cancel This Order</h3>
+                                                <div className="modal-action">
 
-                                                    <label onClick={() => console.log(order._id)} for="order-cancel" class="btn">Yes</label>
-                                                    <label onClick={() => handleDelete(order._id)} for="order-cancel" class="btn">Yes</label>
-                                                    <label for="order-cancel" class="btn">No</label>
+                                                    <label onClick={() => console.log(order._id)} for="order-cancel" className="btn">Yes</label>
+                                                    <label onClick={() => handleDelete(order._id)} for="order-cancel" className="btn">Yes</label>
+                                                    <label for="order-cancel" className="btn">No</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </button>
                                     </td> */}
                                     <td>
-                                        <div class="dropdown dropdown-left dropdown-end">
-                                            <label tabindex="0" class="btn btn-sm m-1">Delete</label>
-                                            <div tabindex="0" class="dropdown-content card w-80 p-2 shadow bg-primary text-primary-content">
-                                                <div class="card-body">
-                                                    <h3 class="card-title">Do You Want To Delete</h3>
+                                        <div className="dropdown dropdown-left dropdown-end">
+                                            <label tabindex="0" className="btn btn-sm m-1">Delete</label>
+                                            <div tabindex="0" className="dropdown-content card w-80 p-2 shadow bg-primary text-primary-content">
+                                                <div className="card-body">
+                                                    <h3 className="card-title">Do You Want To Delete</h3>
                                                     <button className='btn w-1/2' onClick={() => handleDelete(order._id)}>Yes</button>
                                                 </div>
                                             </div>

@@ -7,8 +7,8 @@ const Banner = () => {
             <div className="hero-content py-0 flex-col justify-between lg:flex-row-reverse">
                 <img src={bannerImage} className="max-w-lg" alt='Banner' />
                 <div className='p-8'>
-                    <h1 className="text-5xl font-bold">Box Office News!</h1>
-                    <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <h1 className="text-5xl font-bold">Welcome To Shakil's Hardware</h1>
+                    <p className="py-6">It is a hardware manufacture company. We produce lots of product and received order for customize product</p>
                 </div>
             </div>
         </div>

@@ -57,11 +57,11 @@ const User = () => {
                                     <td>{user.role || 'user'}</td>
                                     <td>
                                         {
-                                            user.role !== 'admin' ? <div class="dropdown dropdown-left dropdown-end">
-                                                <label tabindex="0" class="btn btn-sm m-1">Make Admin</label>
-                                                <div tabindex="0" class="dropdown-content card w-80 p-2 shadow bg-primary text-primary-content">
-                                                    <div class="card-body">
-                                                        <h3 class="card-title">Do You Want To Delete</h3>
+                                            user.role !== 'admin' ? <div className="dropdown dropdown-left dropdown-end">
+                                                <label tabindex="0" className="btn btn-sm m-1">Make Admin</label>
+                                                <div tabindex="0" className="dropdown-content card w-80 p-2 shadow bg-primary text-primary-content">
+                                                    <div className="card-body">
+                                                        <h3 className="card-title">Do You Want To Delete</h3>
                                                         <button className='btn w-1/2' onClick={() => handleDelete(user.email)}>Yes</button>
                                                     </div>
                                                 </div>

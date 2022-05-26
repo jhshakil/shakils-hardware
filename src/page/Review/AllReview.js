@@ -16,7 +16,7 @@ const AllReview = () => {
             <div className='grid grid-cols-3 gap-12 m-8'>
                 {
                     reversArray.map(review => <div key={review._id} className="card w-full bg-base-100 shadow-xl">
-                        <div className="card-body">
+                        <div className="card-body grid grid-cols-2">
                             <div className="card-actions">
                                 <div className="avatar">
                                     <div className="w-24 rounded-full">
@@ -24,9 +24,11 @@ const AllReview = () => {
                                     </div>
                                 </div>
                             </div>
-                            <h2 className="card-title">{review.name}</h2>
-                            <p>{review.comment}</p>
-                            <p>Rating: {review.rating}</p>
+                            <div>
+                                <h2 className="card-title">{review.name}</h2>
+                                <p>{review.comment}</p>
+                                <p>Rating: {review.rating}</p>
+                            </div>
                         </div>
                     </div>)
                 }

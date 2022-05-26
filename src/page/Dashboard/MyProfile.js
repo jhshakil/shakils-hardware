@@ -22,57 +22,57 @@ const MyProfile = () => {
     return (
         <div>
             <h1 className='text-3xl my-8 font-bold'>My Profile</h1>
-            <div class="my-16">
-                <div class="w-full flex-col">
-                    <div class="avatar block m-auto w-1/4">
-                        <div class="w-32 rounded-xl">
+            <div className="my-16">
+                <div className="w-full flex-col">
+                    <div className="avatar block m-auto w-1/4">
+                        <div className="w-32 rounded-xl">
                             <img src={profile?.img} alt='' />
                         </div>
                         <div className='max-h-32'>
                             <EditImage></EditImage>
                         </div>
                     </div>
-                    <div class="w-ful">
-                        <div class="card-body grid grid-cols-3">
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">name</span>
+                    <div className="w-ful">
+                        <div className="card-body grid grid-cols-3">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">name</span>
                                 </label>
-                                <input type="text" disabled value={user.displayName || profile?.name} class="input input-bordered" />
+                                <input type="text" disabled value={user.displayName || profile?.name} className="input input-bordered" />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Email</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" disabled value={user?.email} class="input input-bordered" />
+                                <input type="text" disabled value={user?.email} className="input input-bordered" />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Location</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Location</span>
                                 </label>
-                                <input type="text" disabled value={profile?.location || ''} class="input input-bordered" />
+                                <input type="text" disabled value={profile?.location || ''} className="input input-bordered" />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Education</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Education</span>
                                 </label>
-                                <input type="text" disabled value={profile?.education || ''} class="input input-bordered" />
+                                <input type="text" disabled value={profile?.education || ''} className="input input-bordered" />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Linkedin Profile</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Linkedin Profile</span>
                                 </label>
-                                <input type="text" disabled value={profile?.linkedin || ''} class="input input-bordered" />
+                                <input type="text" disabled value={profile?.linkedin || ''} className="input input-bordered" />
                             </div>
-                            <div class="form-control">
-                                <label class="label">
-                                    <span class="label-text">Number</span>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Number</span>
                                 </label>
-                                <input type="text" disabled value={profile?.number || ''} class="input input-bordered" />
+                                <input type="text" disabled value={profile?.number || ''} className="input input-bordered" />
                             </div>
 
                         </div>
-                        <div class="mt-6">
+                        <div className="mt-6">
                             <EditProfile></EditProfile>
                         </div>
                     </div>

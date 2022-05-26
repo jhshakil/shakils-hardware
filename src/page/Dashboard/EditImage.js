@@ -39,11 +39,11 @@ const EditImage = () => {
     return (
         <div>
             <div className=''>
-                <label for="edit-image" class="btn my-8">Edit Photo</label>
-                <input type="checkbox" id="edit-image" class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
-                    <div class="modal-box">
-                        <label for="edit-image" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <label for="edit-image" className="btn my-8">Edit Photo</label>
+                <input type="checkbox" id="edit-image" className="modal-toggle" />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box">
+                        <label for="edit-image" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control w-full ">
                                 <label className="label">

@@ -43,11 +43,11 @@ const EditProfile = () => {
     };
     return (
         <div className='mb-8'>
-            <label for="edit-profile" class="btn modal-button">Edite Profile</label>
-            <input type="checkbox" id="edit-profile" class="modal-toggle" />
-            <div class="modal modal-bottom sm:modal-middle">
-                <div class="modal-box">
-                    <label for="edit-profile" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+            <label for="edit-profile" className="btn modal-button">Edite Profile</label>
+            <input type="checkbox" id="edit-profile" className="modal-toggle" />
+            <div className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <label for="edit-profile" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full ">
                             <label className="label">

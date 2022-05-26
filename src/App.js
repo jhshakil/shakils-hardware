@@ -20,6 +20,8 @@ import EditOrder from './page/Order/EditOrder';
 import NotFound from './page/Shared/NotFound';
 import User from './page/Dashboard/Admin/User';
 import RequiredAdmin from './page/Dashboard/Admin/RequireAdmin';
+import Blog from './page/Blog/Blog';
+import MyProtfolio from './page/MyProtfolio/MyProtfolio';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='home' element={<Home></Home>}></Route>
+        <Route path='blog' element={<Blog></Blog>}></Route>
+        <Route path='myProtfolio' element={<MyProtfolio></MyProtfolio>}></Route>
         <Route path='allReview' element={<AllReview></AllReview>}></Route>
         <Route path='dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
