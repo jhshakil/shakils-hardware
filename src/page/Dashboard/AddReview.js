@@ -2,14 +2,16 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
 
 const AddReview = () => {
+    const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
-    const { data: profile, isLoading } = useQuery('reviewProfile', () =>
+    const { data: profile, isLoading, refetch } = useQuery('reviewProfile', () =>
         fetch(`http://localhost:5000/profile?email=${user?.email}`).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
@@ -22,7 +24,8 @@ const AddReview = () => {
             name: data.name,
             email: data.email,
             comment: data.comment,
-            rating: data.rating
+            rating: data.rating,
+            img: profile.img
         }
         const url = 'http://localhost:5000/review';
         fetch(url, {
@@ -30,7 +33,11 @@ const AddReview = () => {
             headers: {
                 'content-type': 'application/json'
             }, body: JSON.stringify(reviewData)
-        }).then(res => res.json()).then(result => toast.success('Review Added'))
+        }).then(res => res.json()).then(result => {
+            toast.success('Review Added')
+            navigate('/')
+            // refetch()
+        })
     };
     return (
         <div className='my-4 flex justify-center'>
