@@ -1,10 +1,36 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
+import Loading from '../Shared/Loading';
 
 const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const [user] = useAuthState(auth);
+    const { data: profile, isLoading } = useQuery('reviewProfile', () =>
+        fetch(`http://localhost:5000/profile?email=${user?.email}`).then(res => res.json()))
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     const onSubmit = data => {
-        console.log(data)
+        if (data.rating > 5 && data.rating < 0) {
+            return toast.error('Please Enter Rating 0 to 5')
+        }
+        const reviewData = {
+            name: data.name,
+            email: data.email,
+            comment: data.comment,
+            rating: data.rating
+        }
+        const url = 'http://localhost:5000/review';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            }, body: JSON.stringify(reviewData)
+        }).then(res => res.json()).then(result => toast.success('Review Added'))
     };
     return (
         <div className='my-4 flex justify-center'>
@@ -17,6 +43,7 @@ const AddReview = () => {
                                 <span className="label-text">Your Name</span>
                             </label>
                             <input type="text"
+                                defaultValue={profile.name || ''}
                                 className="input input-bordered w-full"
                                 {...register("name")}
                             />
@@ -26,6 +53,8 @@ const AddReview = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email"
+                                readOnly
+                                value={profile.email}
                                 className="input input-bordered w-full"
                                 {...register("email")}
                             />
@@ -60,17 +89,11 @@ const AddReview = () => {
                                     required: {
                                         value: true,
                                         message: 'rating is Required'
-                                    },
-                                    pattern: {
-                                        value: /^(0|[1-5]\d*)(\.\d+)?$/,
-                                        massage: 'Provide a valid Rating'
                                     }
                                 })}
                             />
                             <label className="label">
                                 {errors.rating?.type === 'required' &&
-                                    <span className='text-red-500'>{errors.rating.message}</span>}
-                                {errors.rating?.type === 'pattern' &&
                                     <span className='text-red-500'>{errors.rating.message}</span>}
                             </label>
                         </div>

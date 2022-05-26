@@ -4,19 +4,16 @@ import { useQuery } from 'react-query';
 import { Outlet } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading';
+import EditImage from './EditImage';
 import EditProfile from './EditProfile';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
-    const { data: profile, isLoading, refetch } = useQuery('profile', () =>
+    const { data: profile, isLoading } = useQuery('profile', () =>
         fetch(`http://localhost:5000/profile?email=${user?.email}`).then(res => res.json()))
-    // if (isLoading) {
-    //     return <Loading></Loading>
-    // }
-    // if (!profile) {
-    //     refetch()
-    // }
-    refetch()
+    if (isLoading) {
+        return <Loading></Loading>
+    }
     return (
         <div>
             <h1 className='text-3xl my-8 font-bold'>My Profile</h1>
@@ -24,7 +21,10 @@ const MyProfile = () => {
                 <div class="w-full flex-col">
                     <div class="avatar block m-auto w-1/4">
                         <div class="w-32 rounded-xl">
-                            <img src="https://api.lorem.space/image/face?hash=64318" alt='' />
+                            <img src={profile.img} alt='' />
+                        </div>
+                        <div className='max-h-32'>
+                            <EditImage></EditImage>
                         </div>
                     </div>
                     <div class="w-ful">
