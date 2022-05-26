@@ -12,7 +12,12 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const { data: profile, isLoading, refetch } = useQuery('reviewProfile', () =>
-        fetch(`http://localhost:5000/profile?email=${user?.email}`).then(res => res.json()))
+        fetch(`http://localhost:5000/profile?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }

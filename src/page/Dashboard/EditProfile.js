@@ -12,7 +12,12 @@ const EditProfile = () => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const { data: profile, isLoading, refetch } = useQuery('profile', () =>
-        fetch(`http://localhost:5000/profile?email=${user.email}`).then(res => res.json()))
+        fetch(`http://localhost:5000/profile?email=${user.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => res.json()))
     // if (isLoading) {
     //     return <Loading></Loading>
     // }

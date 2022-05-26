@@ -7,8 +7,13 @@ import Loading from '../Shared/Loading';
 
 const MyOrder = () => {
     const [user] = useAuthState(auth)
-    const { data: myOrders, isLoading, refetch } = useQuery('myOrder', () => fetch(`http://localhost:5000/myOrder?email=${user?.email}`
-    ).then(res => res.json()))
+    const { data: myOrders, isLoading, refetch } = useQuery('myOrder', () =>
+        fetch(`http://localhost:5000/myOrder?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }

@@ -10,10 +10,15 @@ import EditProfile from './EditProfile';
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const { data: profile, isLoading } = useQuery('profile', () =>
-        fetch(`http://localhost:5000/profile?email=${user?.email}`).then(res => res.json()))
-    if (isLoading) {
-        return <Loading></Loading>
-    }
+        fetch(`http://localhost:5000/profile?email=${user?.email}`, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => res.json()))
+    // if (isLoading) {
+    //     return <Loading></Loading>
+    // }
     return (
         <div>
             <h1 className='text-3xl my-8 font-bold'>My Profile</h1>
@@ -21,7 +26,7 @@ const MyProfile = () => {
                 <div class="w-full flex-col">
                     <div class="avatar block m-auto w-1/4">
                         <div class="w-32 rounded-xl">
-                            <img src={profile.img} alt='' />
+                            <img src={profile?.img} alt='' />
                         </div>
                         <div className='max-h-32'>
                             <EditImage></EditImage>
