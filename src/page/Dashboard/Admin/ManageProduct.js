@@ -7,14 +7,14 @@ import Loading from '../../Shared/Loading';
 const ManageProduct = () => {
     const navigate = useNavigate()
     const { data: products, isLoading, refetch } = useQuery('allProduct', () =>
-        fetch(`http://localhost:5000/product`
+        fetch(`https://murmuring-sierra-99409.herokuapp.com/product`
         ).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }
     const handleDelete = id => {
         console.log(id)
-        const url = `http://localhost:5000/product/${id}`;
+        const url = `https://murmuring-sierra-99409.herokuapp.com/product/${id}`;
         fetch(url, {
             method: 'DELETE'
         })

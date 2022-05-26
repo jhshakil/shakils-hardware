@@ -27,7 +27,7 @@ const AddProduct = () => {
                         price: data.price,
                         img: result.data.url
                     }
-                    const url = 'http://localhost:5000/product';
+                    const url = 'https://murmuring-sierra-99409.herokuapp.com/product';
                     fetch(url, {
                         method: 'POST',
                         headers: {

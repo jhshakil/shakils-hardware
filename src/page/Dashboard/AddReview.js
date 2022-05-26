@@ -12,7 +12,7 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const { data: profile, isLoading, refetch } = useQuery('reviewProfile', () =>
-        fetch(`http://localhost:5000/profile?email=${user?.email}`, {
+        fetch(`https://murmuring-sierra-99409.herokuapp.com/profile?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -34,7 +34,7 @@ const AddReview = () => {
             rating: data.rating,
             img: profile.img
         }
-        const url = 'http://localhost:5000/review';
+        const url = 'https://murmuring-sierra-99409.herokuapp.com/review';
         fetch(url, {
             method: 'POST',
             headers: {
