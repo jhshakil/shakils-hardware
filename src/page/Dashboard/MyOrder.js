@@ -14,6 +14,7 @@ const MyOrder = () => {
     }
 
     const handleDelete = id => {
+        console.log(id)
         const url = `http://localhost:5000/order/${id}`;
         fetch(url, {
             method: 'DELETE'
@@ -63,17 +64,34 @@ const MyOrder = () => {
                                     <td>{order.orderQuantity}</td>
                                     <td>{order.totalPrice}</td>
                                     <td>Payment</td>
-                                    <td><label for="order-cancel" class="btn btn-sm modal-button">Cancel Order</label>
+                                    {/* <td><button onClick={() => console.log(order._id)}>Cancle</button></td> */}
+                                    {/* <td><button>
+                                        <label order={order} for="order-cancel" class="btn btn-sm modal-button">Cancel Order</label>
                                         <input type="checkbox" id="order-cancel" class="modal-toggle" />
                                         <div class="modal modal-bottom sm:modal-middle">
                                             <div class="modal-box">
                                                 <h3 class="font-bold text-lg">Do You Want To Cancel This Order</h3>
                                                 <div class="modal-action">
+
+                                                    <label onClick={() => console.log(order._id)} for="order-cancel" class="btn">Yes</label>
                                                     <label onClick={() => handleDelete(order._id)} for="order-cancel" class="btn">Yes</label>
                                                     <label for="order-cancel" class="btn">No</label>
                                                 </div>
                                             </div>
-                                        </div></td>
+                                        </div>
+                                    </button>
+                                    </td> */}
+                                    <td>
+                                        <div class="dropdown dropdown-left dropdown-end">
+                                            <label tabindex="0" class="btn btn-sm m-1">Delete</label>
+                                            <div tabindex="0" class="dropdown-content card w-80 p-2 shadow bg-primary text-primary-content">
+                                                <div class="card-body">
+                                                    <h3 class="card-title">Do You Want To Delete</h3>
+                                                    <button className='btn w-1/2' onClick={() => handleDelete(order._id)}>Yes</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>)
                         }
 

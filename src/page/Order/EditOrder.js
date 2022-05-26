@@ -1,45 +1,38 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Loading from '../Shared/Loading';
 
-const AddProduct = () => {
+const EditOrder = () => {
+    const { id } = useParams()
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const imageStorageKey = 'd4926ea4d5adb9f79094a31d6e141835'
-    const onSubmit = data => {
-        const image = data.image[0];
-        const formData = new FormData();
-        formData.append('image', image)
-        const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`
+    const { data: product, isLoading, refetch } = useQuery('profile', () =>
+        fetch(`http://localhost:5000/product/${id}`).then(res => res.json()))
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+    const onSubmit = async data => {
+        const name = data.name;
+        const description = data.description;
+        const minOrder = data.minOrder;
+        const quantity = data.quantity;
+        const price = data.price;
+        const productData = { name, description, minOrder, quantity, price }
+        const url = `http://localhost:5000/editProduct/${id}`;
         fetch(url, {
-            method: 'POST',
-            body: formData
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            }, body: JSON.stringify(productData)
+        }).then(res => res.json()).then(result => {
+            console.log(result);
+            toast.success('Update successfully');
+            navigate('/dashboard')
+            return refetch()
         })
-            .then(res => res.json())
-            .then(result => {
-                if (result.success) {
-                    const productData = {
-                        name: data.name,
-                        description: data.description,
-                        minOrder: data.minOrder,
-                        quantity: data.quantity,
-                        price: data.price,
-                        img: result.data.url
-                    }
-                    const url = 'http://localhost:5000/product';
-                    fetch(url, {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json'
-                        }, body: JSON.stringify(productData)
-                    }).then(res => res.json()).then(result => {
-                        toast.success('Review Added')
-                        navigate('/')
-                        // refetch()
-                    })
-                }
-            })
     }
     return (
         <div className='my-4 flex justify-center'>
@@ -52,6 +45,7 @@ const AddProduct = () => {
                                 <span className="label-text">Product Name</span>
                             </label>
                             <input type="text"
+                                defaultValue={product.name}
                                 placeholder="Enter Your Product Name"
                                 className="input input-bordered w-full"
                                 {...register("name", {
@@ -70,6 +64,7 @@ const AddProduct = () => {
                                 <span className="label-text">Product Description</span>
                             </label>
                             <input type="text"
+                                value={product.description}
                                 placeholder="Enter Your Description"
                                 className="input input-bordered w-full"
                                 {...register("description", {
@@ -88,6 +83,7 @@ const AddProduct = () => {
                                 <span className="label-text">Min Order</span>
                             </label>
                             <input type="number"
+                                defaultValue={product.minOrder}
                                 placeholder="Enter Your Min Order"
                                 className="input input-bordered w-full"
                                 {...register("minOrder", {
@@ -106,6 +102,7 @@ const AddProduct = () => {
                                 <span className="label-text">Quantity</span>
                             </label>
                             <input type="number"
+                                defaultValue={product.quantity}
                                 placeholder="Enter Your Quantity"
                                 className="input input-bordered w-full"
                                 {...register("quantity", {
@@ -124,6 +121,7 @@ const AddProduct = () => {
                                 <span className="label-text">Price</span>
                             </label>
                             <input type="number"
+                                defaultValue={product.price}
                                 placeholder="Enter Your Price"
                                 className="input input-bordered w-full"
                                 {...register("price", {
@@ -137,7 +135,7 @@ const AddProduct = () => {
                                 {errors.price?.type === 'required' && <span className='text-red-500'>{errors.price.message}</span>}
                             </label>
                         </div>
-                        <div className="form-control w-full ">
+                        {/* <div className="form-control w-full ">
                             <label className="label">
                                 <span className="label-text">Image</span>
                             </label>
@@ -154,7 +152,7 @@ const AddProduct = () => {
                             <label className="label">
                                 {errors.image?.type === 'required' && <span className='text-red-500'>{errors.image.message}</span>}
                             </label>
-                        </div>
+                        </div> */}
                         <input className='btn btn-natural block m-auto w-full font-bold'
                             type="submit" value='Add Review' />
                     </form>
@@ -164,4 +162,4 @@ const AddProduct = () => {
     );
 };
 
-export default AddProduct;
+export default EditOrder;

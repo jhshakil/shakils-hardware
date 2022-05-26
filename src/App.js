@@ -15,6 +15,9 @@ import AddReview from './page/Dashboard/AddReview';
 import AllReview from './page/Review/AllReview';
 import ManageOrders from './page/Dashboard/Admin/ManageOrders';
 import AddProduct from './page/Dashboard/Admin/AddProduct';
+import ManageProduct from './page/Dashboard/Admin/ManageProduct';
+import EditOrder from './page/Order/EditOrder';
+import NotFound from './page/Shared/NotFound';
 
 function App() {
   return (
@@ -30,10 +33,13 @@ function App() {
           <Route path='addReview' element={<AddReview></AddReview>}></Route>
           <Route path='manageOrder' element={<ManageOrders></ManageOrders>}></Route>
           <Route path='addProduct' element={<AddProduct></AddProduct>}></Route>
+          <Route path='manageProduct' element={<ManageProduct></ManageProduct>}></Route>
         </Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>
         <Route path='placeOrder/:id' element={<RequireAuth><PlaceOrder></PlaceOrder></RequireAuth>}></Route>
+        <Route path='EditOrder/:id' element={<RequireAuth><EditOrder></EditOrder></RequireAuth>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}>Not Found</Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>
