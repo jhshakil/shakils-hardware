@@ -34,7 +34,7 @@ const AddProduct = () => {
                             'content-type': 'application/json'
                         }, body: JSON.stringify(productData)
                     }).then(res => res.json()).then(result => {
-                        toast.success('Review Added')
+                        toast.success('Product Added')
                         navigate('/')
                         // refetch()
                     })
@@ -45,7 +45,7 @@ const AddProduct = () => {
         <div className='my-4 flex justify-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body items-center">
-                    <h2 className="card-title text-3xl font-bold">Add a review</h2>
+                    <h2 className="card-title text-3xl font-bold">Add a Product</h2>
                     <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full ">
                             <label className="label">
@@ -156,7 +156,7 @@ const AddProduct = () => {
                             </label>
                         </div>
                         <input className='btn btn-natural block m-auto w-full font-bold'
-                            type="submit" value='Add Review' />
+                            type="submit" value='Add Product' />
                     </form>
                 </div>
             </div>

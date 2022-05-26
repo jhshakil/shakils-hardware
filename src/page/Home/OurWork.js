@@ -9,7 +9,7 @@ const OurWork = () => {
         <div className="card">
             <div className="card-body items-center text-center">
                 <h2 className="card-title text-3xl font-bold">How We Work</h2>
-                <div className="w-full my-4 grid grid-cols-4">
+                <div className="w-full my-4 grid grid-cols-1 lg:grid-cols-4">
                     <div>
                         <div class="avatar">
                             <div class="w-16 rounded-xl">

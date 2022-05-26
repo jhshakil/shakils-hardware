@@ -10,7 +10,7 @@ const BusinessSummary = () => {
             <div className="card-body items-center text-center">
                 <h2 className="card-title text-3xl font-bold">Our Business Summary</h2>
                 <p>We Provide Best Service In Our Country</p>
-                <div className="w-full my-4 grid grid-cols-4">
+                <div className="w-full my-4 grid grid-cols-1 lg:grid-cols-4">
                     <div>
                         <div class="avatar">
                             <div class="w-16 rounded-xl">

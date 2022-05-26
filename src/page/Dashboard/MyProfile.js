@@ -21,7 +21,7 @@ const MyProfile = () => {
     // }
     return (
         <div>
-            <h1 className='text-3xl my-8 font-bold'>My Profile</h1>
+            <h1 className='text-3xl p-2 my-8 font-bold'>My Profile</h1>
             <div className="my-16">
                 <div className="w-full flex-col">
                     <div className="avatar block m-auto w-1/4">
@@ -32,8 +32,8 @@ const MyProfile = () => {
                             <EditImage></EditImage>
                         </div>
                     </div>
-                    <div className="w-ful">
-                        <div className="card-body grid grid-cols-3">
+                    <div className="w-ful p-2">
+                        <div className="card-body grid grid-cols-1 lg:grid-cols-3">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">name</span>

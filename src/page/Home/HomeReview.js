@@ -12,7 +12,7 @@ const HomeReview = () => {
     return (
         <div className='my-16'>
             <h2 className='text-center font-bold text-3xl'>Our Customer Review</h2>
-            <div className='grid grid-cols-3 gap-12 m-8'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-12 m-8'>
                 {
                     sliceReview.map(review => <div key={review._id} className="card w-full bg-base-100 shadow-xl">
                         <div className="card-body grid grid-cols-2">

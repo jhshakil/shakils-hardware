@@ -17,7 +17,7 @@ const Tools = () => {
     return (
         <div className='my-8'>
             <h2 className='text-center font-bold text-3xl'>Our Production</h2>
-            <div className='grid grid-cols-3 gap-12 m-8'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-12 m-8'>
                 {
                     tools.map(tool => <div key={tool._id} className="card w-full bg-base-100 shadow-xl">
                         <figure className="px-10 pt-10">
