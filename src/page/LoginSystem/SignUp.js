@@ -30,7 +30,7 @@ const SignUp = () => {
     if (loading) {
         return <Loading></Loading>
     }
-    if (user) {
+    if (token) {
         return navigate(from, { replace: true });
     }
     const onSubmit = data => {
