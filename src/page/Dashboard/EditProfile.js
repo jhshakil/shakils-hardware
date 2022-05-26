@@ -37,8 +37,8 @@ const EditProfile = () => {
         })
     };
     return (
-        <div className=''>
-            <label for="edit-profile" class="btn modal-button">open modal</label>
+        <div className='mb-8'>
+            <label for="edit-profile" class="btn modal-button">Edite Profile</label>
             <input type="checkbox" id="edit-profile" class="modal-toggle" />
             <div class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">

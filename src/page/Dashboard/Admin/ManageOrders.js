@@ -1,18 +1,14 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
-import Loading from '../Shared/Loading';
+import Loading from '../../Shared/Loading';
 
-const MyOrder = () => {
-    const [user] = useAuthState(auth)
-    const { data: myOrders, isLoading, refetch } = useQuery('myOrder', () => fetch(`http://localhost:5000/myOrder?email=${user?.email}`
+const ManageOrders = () => {
+    const { data: orders, isLoading, refetch } = useQuery('myOrder', () => fetch(`http://localhost:5000/order`
     ).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }
-
     const handleDelete = id => {
         const url = `http://localhost:5000/order/${id}`;
         fetch(url, {
@@ -26,7 +22,7 @@ const MyOrder = () => {
     }
     return (
         <div>
-            <h1 className='text-3xl text-center font-bold my-8'>My Order</h1>
+            <h1 className='text-3xl text-center font-bold my-8'>All Order</h1>
             <div className="overflow-x-auto">
                 <table className="table table-compact w-full">
                     <thead>
@@ -42,7 +38,7 @@ const MyOrder = () => {
                     </thead>
                     <tbody>
                         {
-                            myOrders.map((order, index) =>
+                            orders.map((order, index) =>
                                 <tr key={order._id}>
                                     <th>{index + 1}</th>
                                     <td>
@@ -84,4 +80,4 @@ const MyOrder = () => {
     );
 };
 
-export default MyOrder;
+export default ManageOrders;

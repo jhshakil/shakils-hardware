@@ -17,7 +17,7 @@ const AddReview = () => {
         return <Loading></Loading>
     }
     const onSubmit = data => {
-        if (data.rating > 5 && data.rating < 0) {
+        if (parseInt(data.rating) > 5 && parseInt(data.rating) < 0) {
             return toast.error('Please Enter Rating 0 to 5')
         }
         const reviewData = {

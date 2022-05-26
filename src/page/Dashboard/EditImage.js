@@ -4,12 +4,11 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
-const EditImage = ({ refetch }) => {
+const EditImage = () => {
     const { register, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const imageStorageKey = 'd4926ea4d5adb9f79094a31d6e141835'
     const onSubmit = data => {
-        console.log(data.image[0])
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image)
@@ -20,9 +19,7 @@ const EditImage = ({ refetch }) => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result.success)
                 if (result.success) {
-                    console.log(result.data.url);
                     const img = result.data.url;
                     const userData = { img }
                     const url = `http://localhost:5000/picture/${user.email}`;
@@ -42,11 +39,11 @@ const EditImage = ({ refetch }) => {
     return (
         <div>
             <div className=''>
-                <label for="edit-profile" class="btn my-8">Edit Photo</label>
-                <input type="checkbox" id="edit-profile" class="modal-toggle" />
+                <label for="edit-image" class="btn my-8">Edit Photo</label>
+                <input type="checkbox" id="edit-image" class="modal-toggle" />
                 <div class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box">
-                        <label for="edit-profile" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <label for="edit-image" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control w-full ">
                                 <label className="label">
