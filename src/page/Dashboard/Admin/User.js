@@ -22,10 +22,17 @@ const User = () => {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json())
-            .then(result => {
-                toast.success('Successfully Make An Admin')
-                refetch()
+            .then(res => {
+                if (res.status === 403) {
+                    return toast.error('You do not have permission to make an admin')
+                }
+                return res.json()
+            })
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch()
+                    toast.success('Successfully Make an Admin')
+                }
             })
     }
     return (
