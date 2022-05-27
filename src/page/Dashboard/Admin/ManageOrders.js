@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loading from '../../Shared/Loading';
 
@@ -39,6 +40,7 @@ const ManageOrders = () => {
                             <th>Total Price</th>
                             <th>Payment</th>
                             <th>Remove</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,15 +67,25 @@ const ManageOrders = () => {
                                     <td>{order.totalPrice}</td>
                                     <td>Payment</td>
                                     <td>
-                                        <div className="dropdown dropdown-left dropdown-end">
-                                            <label tabindex="0" className="btn btn-sm m-1">Delete</label>
-                                            <div tabindex="0" className="dropdown-content card w-80 p-2 shadow bg-primary text-primary-content">
-                                                <div className="card-body">
-                                                    <h3 className="card-title">Do You Want To Delete</h3>
-                                                    <button className='btn w-1/2' onClick={() => handleDelete(order._id)}>Yes</button>
+                                        {
+                                            !order.paid && <div className="dropdown dropdown-left dropdown-end">
+                                                <label tabindex="0" className="btn btn-sm m-1">Delete</label>
+                                                <div tabindex="0" className="dropdown-content card w-80 p-2 shadow bg-primary text-primary-content">
+                                                    <div className="card-body">
+                                                        <h3 className="card-title">Do You Want To Delete</h3>
+                                                        <button className='btn w-1/2' onClick={() => handleDelete(order._id)}>Yes</button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        {
+                                            order.paid && <span className='btn btn-sm btn-primary text-white'>Pending</span>
+                                        }
+                                        {
+                                            !order.paid && <Link to={`/dashboard/payment/${order._id}`} className='btn btn-sm'>Unpaid</Link>
+                                        }
                                     </td>
                                 </tr>)
                         }
