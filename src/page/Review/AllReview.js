@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
 
 const AllReview = () => {
-    const { data: reviews, isLoading, refetch } = useQuery('homeReview', () => fetch('https://floating-harbor-58011.herokuapp.com/review').then(res => res.json()));
+    const { data: reviews, isLoading } = useQuery('homeReview', () => fetch('https://floating-harbor-58011.herokuapp.com/review').then(res => res.json()));
     if (isLoading) {
         return <Loading></Loading>
     }

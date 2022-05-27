@@ -36,7 +36,6 @@ const AddProduct = () => {
                     }).then(res => res.json()).then(result => {
                         toast.success('Product Added')
                         navigate('/')
-                        // refetch()
                     })
                 }
             })

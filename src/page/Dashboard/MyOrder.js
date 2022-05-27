@@ -69,23 +69,6 @@ const MyOrder = () => {
                                     <td>{order.orderQuantity}</td>
                                     <td>{order.totalPrice}</td>
                                     <td>Payment</td>
-                                    {/* <td><button onClick={() => console.log(order._id)}>Cancle</button></td> */}
-                                    {/* <td><button>
-                                        <label order={order} for="order-cancel" className="btn btn-sm modal-button">Cancel Order</label>
-                                        <input type="checkbox" id="order-cancel" className="modal-toggle" />
-                                        <div className="modal modal-bottom sm:modal-middle">
-                                            <div className="modal-box">
-                                                <h3 className="font-bold text-lg">Do You Want To Cancel This Order</h3>
-                                                <div className="modal-action">
-
-                                                    <label onClick={() => console.log(order._id)} for="order-cancel" className="btn">Yes</label>
-                                                    <label onClick={() => handleDelete(order._id)} for="order-cancel" className="btn">Yes</label>
-                                                    <label for="order-cancel" className="btn">No</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </button>
-                                    </td> */}
                                     <td>
                                         <div className="dropdown dropdown-left dropdown-end">
                                             <label tabindex="0" className="btn btn-sm m-1">Delete</label>

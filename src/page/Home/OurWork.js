@@ -11,8 +11,8 @@ const OurWork = () => {
                 <h2 className="card-title text-3xl font-bold">How We Work</h2>
                 <div className="w-full my-4 grid grid-cols-1 lg:grid-cols-4">
                     <div>
-                        <div class="avatar">
-                            <div class="w-16 rounded-xl">
+                        <div className="avatar">
+                            <div className="w-16 rounded-xl">
                                 <img src={order} alt='' />
                             </div>
                         </div>
@@ -20,8 +20,8 @@ const OurWork = () => {
                         <p className='font-bold'>We Collect Order</p>
                     </div>
                     <div>
-                        <div class="avatar">
-                            <div class="w-16 rounded-xl">
+                        <div className="avatar">
+                            <div className="w-16 rounded-xl">
                                 <img src={factory} alt='' />
                             </div>
                         </div>
@@ -29,8 +29,8 @@ const OurWork = () => {
                         <p className='font-bold'>Make in The Factory</p>
                     </div>
                     <div>
-                        <div class="avatar">
-                            <div class="w-16 rounded-xl">
+                        <div className="avatar">
+                            <div className="w-16 rounded-xl">
                                 <img src={packaging} alt='' />
                             </div>
                         </div>
@@ -38,8 +38,8 @@ const OurWork = () => {
                         <p className='font-bold'>Package Carefully</p>
                     </div>
                     <div>
-                        <div class="avatar">
-                            <div class="w-16 rounded-xl">
+                        <div className="avatar">
+                            <div className="w-16 rounded-xl">
                                 <img src={delivery} alt='' />
                             </div>
                         </div>

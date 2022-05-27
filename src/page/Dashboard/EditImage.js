@@ -29,7 +29,6 @@ const EditImage = () => {
                             'content-type': 'application/json'
                         }, body: JSON.stringify(userData)
                     }).then(res => res.json()).then(result => {
-                        // refetch()
                         return toast.success('Update successfully');
                     })
                 }
@@ -39,11 +38,11 @@ const EditImage = () => {
     return (
         <div>
             <div className=''>
-                <label for="edit-image" className="btn my-8">Edit Photo</label>
+                <label htmlFor="edit-image" className="btn my-8">Edit Photo</label>
                 <input type="checkbox" id="edit-image" className="modal-toggle" />
                 <div className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box">
-                        <label for="edit-image" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <label htmlFor="edit-image" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                         <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control w-full ">
                                 <label className="label">

@@ -12,8 +12,8 @@ const BusinessSummary = () => {
                 <p>We Provide Best Service In Our Country</p>
                 <div className="w-full my-4 grid grid-cols-1 lg:grid-cols-4">
                     <div>
-                        <div class="avatar">
-                            <div class="w-16 rounded-xl">
+                        <div className="avatar">
+                            <div className="w-16 rounded-xl">
                                 <img src={factory} alt='' />
                             </div>
                         </div>
@@ -21,8 +21,8 @@ const BusinessSummary = () => {
                         <h3 className='text-5xl  my-4 font-bold text-neutral'>7</h3>
                     </div>
                     <div>
-                        <div class="avatar">
-                            <div class="w-16 rounded-xl">
+                        <div className="avatar">
+                            <div className="w-16 rounded-xl">
                                 <img src={worker} alt='' />
                             </div>
                         </div>
@@ -30,8 +30,8 @@ const BusinessSummary = () => {
                         <h3 className='text-5xl  my-4 font-bold text-neutral'>50000 +</h3>
                     </div>
                     <div>
-                        <div class="avatar">
-                            <div class="w-16 rounded-xl">
+                        <div className="avatar">
+                            <div className="w-16 rounded-xl">
                                 <img src={client} alt='' />
                             </div>
                         </div>
@@ -39,8 +39,8 @@ const BusinessSummary = () => {
                         <h3 className='text-5xl  my-4 font-bold text-neutral'>700 +</h3>
                     </div>
                     <div>
-                        <div class="avatar">
-                            <div class="w-16 rounded-xl">
+                        <div className="avatar">
+                            <div className="w-16 rounded-xl">
                                 <img src={dealer} alt='' />
                             </div>
                         </div>

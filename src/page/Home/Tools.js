@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import PlaceOrder from '../Order/PlaceOrder';
 import Loading from '../Shared/Loading';
 
 const Tools = () => {

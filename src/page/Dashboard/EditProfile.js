@@ -5,22 +5,18 @@ import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
-import Loading from '../Shared/Loading';
 
 const EditProfile = () => {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
-    const { data: profile, isLoading, refetch } = useQuery('profile', () =>
+    const { data: profile, refetch } = useQuery('profile', () =>
         fetch(`https://floating-harbor-58011.herokuapp.com/profile?email=${user.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
         }).then(res => res.json()))
-    // if (isLoading) {
-    //     return <Loading></Loading>
-    // }
     const onSubmit = async data => {
         const name = data.name;
         const location = data.location;
@@ -43,11 +39,11 @@ const EditProfile = () => {
     };
     return (
         <div className='mb-8'>
-            <label for="edit-profile" className="btn modal-button">Edite Profile</label>
+            <label htmlFor="edit-profile" className="btn modal-button">Edite Profile</label>
             <input type="checkbox" id="edit-profile" className="modal-toggle" />
             <div className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <label for="edit-profile" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                    <label htmlFor="edit-profile" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <form className='w-full' onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full ">
                             <label className="label">

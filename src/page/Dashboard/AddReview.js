@@ -11,7 +11,7 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const { data: profile } = useQuery('reviewProfile', () =>
-        fetch(`http://localhost:5000/profile?email=${user?.email}`, {
+        fetch(`https://floating-harbor-58011.herokuapp.com/profile?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

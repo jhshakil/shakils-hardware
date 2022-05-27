@@ -1,6 +1,5 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
-import AllReview from '../Review/AllReview';
 import Banner from './Banner';
 import BusinessSummary from './BusinessSummary';
 import Capability from './Capability';
