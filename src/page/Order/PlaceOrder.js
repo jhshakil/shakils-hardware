@@ -13,7 +13,7 @@ const PlaceOrder = () => {
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit, control } = useForm();
     const [totalCost, setTotalCost] = useState('');
-    const url = `https://murmuring-sierra-99409.herokuapp.com/product/${id}`
+    const url = `http://localhost:5000/product/${id}`
     const { data: product, isLoading } = useQuery('productInfo', () => fetch(url).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
@@ -51,7 +51,7 @@ const PlaceOrder = () => {
             orderQuantity: data.orderQuantity,
             img: product.img
         }
-        const url = 'https://murmuring-sierra-99409.herokuapp.com/order'
+        const url = 'http://localhost:5000/order'
         fetch(url, {
             method: 'POST',
             headers: {
@@ -65,7 +65,7 @@ const PlaceOrder = () => {
             })
         const available = quantity - orderQuantity;
         const update = { available };
-        fetch(`https://murmuring-sierra-99409.herokuapp.com/product/${product._id}`, {
+        fetch(`http://localhost:5000/product/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -22,7 +22,7 @@ const EditImage = () => {
                 if (result.success) {
                     const img = result.data.url;
                     const userData = { img }
-                    const url = `https://murmuring-sierra-99409.herokuapp.com/picture/${user.email}`;
+                    const url = `http://localhost:5000/picture/${user.email}`;
                     fetch(url, {
                         method: 'PUT',
                         headers: {

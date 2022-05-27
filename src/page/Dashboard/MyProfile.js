@@ -10,7 +10,7 @@ import EditProfile from './EditProfile';
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const { data: profile, isLoading } = useQuery('profile', () =>
-        fetch(`https://murmuring-sierra-99409.herokuapp.com/profile?email=${user?.email}`, {
+        fetch(`http://localhost:5000/profile?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -38,7 +38,7 @@ const MyProfile = () => {
                                 <label className="label">
                                     <span className="label-text">name</span>
                                 </label>
-                                <input type="text" disabled value={user.displayName || profile?.name} className="input input-bordered" />
+                                <input type="text" disabled value={user?.displayName || profile?.name} className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">

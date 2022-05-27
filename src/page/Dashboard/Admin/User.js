@@ -5,7 +5,7 @@ import Loading from '../../Shared/Loading';
 
 const User = () => {
     const { data: users, isLoading, refetch } = useQuery('myOrder', () =>
-        fetch(`https://murmuring-sierra-99409.herokuapp.com/user`, {
+        fetch(`http://localhost:5000/user`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -15,7 +15,7 @@ const User = () => {
         return <Loading></Loading>
     }
     const handleDelete = email => {
-        const url = `https://murmuring-sierra-99409.herokuapp.com/user/admin/${email}`;
+        const url = `http://localhost:5000/user/admin/${email}`;
         fetch(url, {
             method: 'PUT',
             headers: {
