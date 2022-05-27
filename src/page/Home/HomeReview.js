@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Loading from '../Shared/Loading'
 
 const HomeReview = () => {
-    const { data: reviews, isLoading, refetch } = useQuery('homeReview', () => fetch('http://localhost:5000/review').then(res => res.json()));
+    const { data: reviews, isLoading, refetch } = useQuery('homeReview', () => fetch('https://floating-harbor-58011.herokuapp.com/review').then(res => res.json()));
     if (isLoading) {
         return <Loading></Loading>
     }

@@ -5,7 +5,7 @@ import Loading from '../../Shared/Loading';
 
 const ManageOrders = () => {
     const { data: orders, isLoading, refetch } = useQuery('myOrder', () =>
-        fetch(`http://localhost:5000/order`, {
+        fetch(`https://floating-harbor-58011.herokuapp.com/order`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -15,7 +15,7 @@ const ManageOrders = () => {
         return <Loading></Loading>
     }
     const handleDelete = id => {
-        const url = `http://localhost:5000/order/${id}`;
+        const url = `https://floating-harbor-58011.herokuapp.com/order/${id}`;
         fetch(url, {
             method: 'DELETE'
         })
