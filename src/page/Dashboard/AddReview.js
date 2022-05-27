@@ -5,22 +5,18 @@ import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
-import Loading from '../Shared/Loading';
 
 const AddReview = () => {
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
-    const { data: profile, isLoading, refetch } = useQuery('reviewProfile', () =>
-        fetch(`https://floating-harbor-58011.herokuapp.com/profile?email=${user?.email}`, {
+    const { data: profile } = useQuery('reviewProfile', () =>
+        fetch(`http://localhost:5000/profile?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
         }).then(res => res.json()))
-    if (isLoading) {
-        return <Loading></Loading>
-    }
     const onSubmit = data => {
         const rating = parseInt(data.rating)
         if (rating > 5 || rating < 0) {
@@ -43,7 +39,6 @@ const AddReview = () => {
         }).then(res => res.json()).then(result => {
             toast.success('Review Added')
             navigate('/')
-            // refetch()
         })
     };
     return (
@@ -57,7 +52,7 @@ const AddReview = () => {
                                 <span className="label-text">Your Name</span>
                             </label>
                             <input type="text"
-                                defaultValue={profile.name || ''}
+                                defaultValue={profile?.name || ''}
                                 className="input input-bordered w-full"
                                 {...register("name")}
                             />
@@ -68,7 +63,7 @@ const AddReview = () => {
                             </label>
                             <input type="email"
                                 readOnly
-                                value={profile.email}
+                                value={profile?.email}
                                 className="input input-bordered w-full"
                                 {...register("email")}
                             />

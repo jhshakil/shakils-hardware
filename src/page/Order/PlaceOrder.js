@@ -87,7 +87,7 @@ const PlaceOrder = () => {
                                     <span className="label-text">Your Name</span>
                                 </label>
                                 <input type="text"
-                                    value={user?.displayName || ''}
+                                    defaultValue={user?.displayName || ''}
                                     className="input input-bordered w-full"
                                     {...register("name", {
                                         required: {
