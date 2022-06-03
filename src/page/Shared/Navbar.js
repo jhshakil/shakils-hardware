@@ -14,6 +14,7 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/dashboard'>Dashboard</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
+        {/* <li><a href="https://jhshakil.github.io/protfolio-client/" target='_blank' rel='noopener noreferrer'>My Protfolio</a></li> */}
         <li><Link to='/myProtfolio'>My Protfolio</Link></li>
         {
             user ? <li><Link onClick={handleLogOut} to='/login'>Log Out</Link></li> : <li><Link to='/login'>Log In</Link></li>
