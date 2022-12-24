@@ -11,7 +11,7 @@ const EditProfile = () => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
     const { data: profile, refetch } = useQuery('profile', () =>
-        fetch(`https://floating-harbor-58011.herokuapp.com/profile?email=${user.email}`, {
+        fetch(`https://shakils-hardware-server.vercel.app/profile?email=${user.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -24,7 +24,7 @@ const EditProfile = () => {
         const linkedin = data.linkedin;
         const number = data.number;
         const userData = { name, location, education, linkedin, number }
-        const url = `https://floating-harbor-58011.herokuapp.com/profile/${user.email}`;
+        const url = `https://shakils-hardware-server.vercel.app/profile/${user.email}`;
         fetch(url, {
             method: 'PUT',
             headers: {

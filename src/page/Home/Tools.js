@@ -5,7 +5,7 @@ import Loading from '../Shared/Loading';
 
 const Tools = () => {
     const navigate = useNavigate();
-    const { data: tools, isLoading } = useQuery('tools', () => fetch('https://floating-harbor-58011.herokuapp.com/product').then(res => res.json()))
+    const { data: tools, isLoading } = useQuery('tools', () => fetch('https://shakils-hardware-server.vercel.app/product').then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }

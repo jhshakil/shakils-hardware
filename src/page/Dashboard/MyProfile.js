@@ -8,7 +8,7 @@ import EditProfile from './EditProfile';
 const MyProfile = () => {
     const [user] = useAuthState(auth);
     const { data: profile } = useQuery('profile', () =>
-        fetch(`https://floating-harbor-58011.herokuapp.com/profile?email=${user?.email}`, {
+        fetch(`https://shakils-hardware-server.vercel.app/profile?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`

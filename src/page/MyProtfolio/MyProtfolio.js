@@ -46,6 +46,14 @@ const MyProtfolio = () => {
                                 <progress class="progress w-56 ml-4" value="90" max="100"></progress>
                             </div>
                             <div className='flex items-center'>
+                                <p>Vue</p>
+                                <progress class="progress w-56 ml-4" value="95" max="100"></progress>
+                            </div>
+                            <div className='flex items-center'>
+                                <p>Nuxt</p>
+                                <progress class="progress w-56 ml-4" value="95" max="100"></progress>
+                            </div>
+                            <div className='flex items-center'>
                                 <p>React</p>
                                 <progress class="progress w-56 ml-4" value="95" max="100"></progress>
                             </div>
@@ -55,6 +63,10 @@ const MyProtfolio = () => {
                             </div>
                             <div className='flex items-center'>
                                 <p>Tailwind</p>
+                                <progress class="progress w-56 ml-4" value="90" max="100"></progress>
+                            </div>
+                            <div className='flex items-center'>
+                                <p>Vuetify</p>
                                 <progress class="progress w-56 ml-4" value="90" max="100"></progress>
                             </div>
                             <div className='flex items-center'>
@@ -98,10 +110,6 @@ const MyProtfolio = () => {
                             <div className='flex items-center'>
                                 <p>GitHub</p>
                                 <progress class="progress w-56 ml-4" value="80" max="100"></progress>
-                            </div>
-                            <div className='flex items-center'>
-                                <p>Heroku</p>
-                                <progress class="progress w-56 ml-4" value="40" max="100"></progress>
                             </div>
                             <div className='flex items-center'>
                                 <p>React Query</p>

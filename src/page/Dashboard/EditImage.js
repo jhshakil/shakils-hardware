@@ -22,7 +22,7 @@ const EditImage = () => {
                 if (result.success) {
                     const img = result.data.url;
                     const userData = { img }
-                    const url = `https://floating-harbor-58011.herokuapp.com/picture/${user.email}`;
+                    const url = `https://shakils-hardware-server.vercel.app/picture/${user.email}`;
                     fetch(url, {
                         method: 'PUT',
                         headers: {

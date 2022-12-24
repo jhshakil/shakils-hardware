@@ -11,7 +11,7 @@ const CheckoutForm = ({ paymentData }) => {
     const { _id, totalPrice, name, email } = paymentData;
 
     useEffect(() => {
-        fetch('https://floating-harbor-58011.herokuapp.com/create-payment-intent', {
+        fetch('https://shakils-hardware-server.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -72,7 +72,7 @@ const CheckoutForm = ({ paymentData }) => {
                 transactionId: paymentIntent.id
             }
 
-            fetch(`https://floating-harbor-58011.herokuapp.com/order/${_id}`, {
+            fetch(`https://shakils-hardware-server.vercel.app/order/${_id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json',

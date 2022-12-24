@@ -10,7 +10,7 @@ const EditOrder = () => {
     const navigate = useNavigate()
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { data: product, isLoading, refetch } = useQuery('profile', () =>
-        fetch(`https://floating-harbor-58011.herokuapp.com/product/${id}`).then(res => res.json()))
+        fetch(`https://shakils-hardware-server.vercel.app/product/${id}`).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -21,7 +21,7 @@ const EditOrder = () => {
         const quantity = data.quantity;
         const price = data.price;
         const productData = { name, description, minOrder, quantity, price }
-        const url = `https://floating-harbor-58011.herokuapp.com/editProduct/${id}`;
+        const url = `https://shakils-hardware-server.vercel.app/editProduct/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

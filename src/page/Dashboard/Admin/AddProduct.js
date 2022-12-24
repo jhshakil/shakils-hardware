@@ -27,7 +27,7 @@ const AddProduct = () => {
                         price: data.price,
                         img: result.data.url
                     }
-                    const url = 'https://floating-harbor-58011.herokuapp.com/product';
+                    const url = 'https://shakils-hardware-server.vercel.app/product';
                     fetch(url, {
                         method: 'POST',
                         headers: {

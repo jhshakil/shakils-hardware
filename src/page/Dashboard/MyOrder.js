@@ -9,7 +9,7 @@ import Loading from '../Shared/Loading';
 const MyOrder = () => {
     const [user] = useAuthState(auth)
     const { data: myOrders, isLoading, refetch } = useQuery('myOrder', () =>
-        fetch(`https://floating-harbor-58011.herokuapp.com/myOrder?email=${user?.email}`, {
+        fetch(`https://shakils-hardware-server.vercel.app/myOrder?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -21,7 +21,7 @@ const MyOrder = () => {
 
     const handleDelete = id => {
         console.log(id)
-        const url = `https://floating-harbor-58011.herokuapp.com/order/${id}`;
+        const url = `https://shakils-hardware-server.vercel.app/order/${id}`;
         fetch(url, {
             method: 'DELETE'
         })

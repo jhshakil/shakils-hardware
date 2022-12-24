@@ -11,7 +11,7 @@ const AddReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const { data: profile } = useQuery('reviewProfile', () =>
-        fetch(`https://floating-harbor-58011.herokuapp.com/profile?email=${user?.email}`, {
+        fetch(`https://shakils-hardware-server.vercel.app/profile?email=${user?.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -30,7 +30,7 @@ const AddReview = () => {
             rating: data.rating,
             img: profile.img
         }
-        const url = 'https://floating-harbor-58011.herokuapp.com/review';
+        const url = 'https://shakils-hardware-server.vercel.app/review';
         fetch(url, {
             method: 'POST',
             headers: {

@@ -7,14 +7,14 @@ import Loading from '../../Shared/Loading';
 const ManageProduct = () => {
     const navigate = useNavigate()
     const { data: products, isLoading, refetch } = useQuery('allProduct', () =>
-        fetch(`https://floating-harbor-58011.herokuapp.com/product`
+        fetch(`https://shakils-hardware-server.vercel.app/product`
         ).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
     }
     const handleDelete = id => {
         console.log(id)
-        const url = `https://floating-harbor-58011.herokuapp.com/product/${id}`;
+        const url = `https://shakils-hardware-server.vercel.app/product/${id}`;
         fetch(url, {
             method: 'DELETE'
         })

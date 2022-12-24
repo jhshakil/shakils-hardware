@@ -13,7 +13,7 @@ const PlaceOrder = () => {
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit, control } = useForm();
     const [totalCost, setTotalCost] = useState('');
-    const url = `https://floating-harbor-58011.herokuapp.com/product/${id}`
+    const url = `https://shakils-hardware-server.vercel.app/product/${id}`
     const { data: product, isLoading } = useQuery('productInfo', () => fetch(url).then(res => res.json()))
     if (isLoading) {
         return <Loading></Loading>
@@ -51,7 +51,7 @@ const PlaceOrder = () => {
             orderQuantity: data.orderQuantity,
             img: product.img
         }
-        const url = 'https://floating-harbor-58011.herokuapp.com/order'
+        const url = 'https://shakils-hardware-server.vercel.app/order'
         fetch(url, {
             method: 'POST',
             headers: {
@@ -65,7 +65,7 @@ const PlaceOrder = () => {
             })
         const available = quantity - orderQuantity;
         const update = { available };
-        fetch(`https://floating-harbor-58011.herokuapp.com/product/${product._id}`, {
+        fetch(`https://shakils-hardware-server.vercel.app/product/${product._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

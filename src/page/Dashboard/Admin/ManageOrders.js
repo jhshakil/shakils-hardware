@@ -6,7 +6,7 @@ import Loading from '../../Shared/Loading';
 
 const ManageOrders = () => {
     const { data: orders, isLoading, refetch } = useQuery('myOrder', () =>
-        fetch(`https://floating-harbor-58011.herokuapp.com/order`, {
+        fetch(`https://shakils-hardware-server.vercel.app/order`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -16,7 +16,7 @@ const ManageOrders = () => {
         return <Loading></Loading>
     }
     const handleDelete = id => {
-        const url = `https://floating-harbor-58011.herokuapp.com/order/${id}`;
+        const url = `https://shakils-hardware-server.vercel.app/order/${id}`;
         fetch(url, {
             method: 'DELETE'
         })

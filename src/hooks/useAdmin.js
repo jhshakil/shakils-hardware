@@ -6,7 +6,7 @@ const useAdmin = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`https://floating-harbor-58011.herokuapp.com/admin/${email}`, {
+            fetch(`https://shakils-hardware-server.vercel.app/admin/${email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

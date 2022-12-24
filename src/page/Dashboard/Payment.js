@@ -10,7 +10,7 @@ const stripePromise = loadStripe('pk_test_51L1kzcGxt14VauoBWJzfIgWE0SX9onWglP24b
 
 const Payment = () => {
     const { id } = useParams()
-    const url = `https://floating-harbor-58011.herokuapp.com/order/${id}`;
+    const url = `https://shakils-hardware-server.vercel.app/order/${id}`;
     const { data: paymentData, isLoading } = useQuery(['payment', id], () => fetch(url, {
         method: 'GET',
         headers: {
